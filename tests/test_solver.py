@@ -1,7 +1,7 @@
 import pytest
 
 from nonogram_solver.solver import (
-    solve,
+    solve_nonogram,
     Solver,
 )
 
@@ -101,4 +101,4 @@ def test_solve_line(line, specs, expected):
     ],
 )
 def test_solve_nonogram(rows, cols, expected):
-    assert solve(verticals=cols, horizontals=rows) == expected
+    assert solve_nonogram(verticals=cols, horizontals=rows) == expected

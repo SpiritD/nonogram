@@ -84,11 +84,11 @@ class Solver:
             self.nonogram.board[pos] = step_result
         else:
             step_result = self._solve_line([c[pos] for c in self.nonogram.board], self.nonogram.verticals[pos])
-            did_anything = 0
+            did_anything = False
             for i, r in enumerate(step_result):
                 did_anything = did_anything or r != self.nonogram.board[i][pos]
                 self.nonogram.board[i][pos] = r
-        return did_anything
+        return int(did_anything)
 
     def _solve_line(self, line: List[Optional[int]], specs: List[int]) -> List[Optional[int]]:
         """"Solves a single line (horizontal or vertical) according to the spec."""
@@ -127,7 +127,7 @@ class Solver:
         return result_board
 
 
-def solve(
+def solve_nonogram(
     verticals: List[List[int]],
     horizontals: List[List[int]],
 ) -> List[List[Optional[int]]]:
@@ -138,13 +138,3 @@ def solve(
     )
     solver = Solver(nonogram=nonogram)
     return solver.solve_all()
-
-
-if __name__ == '__main__':
-    # it's just for example
-    result = solve(
-        [[1, 1, 2], [1, 2], [6], [1]],
-        [[3], [2], [1, 1], [2], [3], [1, 1]],
-    )
-    for row in result:
-        print(' '.join(str(i) for i in row))

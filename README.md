@@ -23,3 +23,17 @@ PYTHONPATH=$PWD pytest tests
 flake8 nonogram_solver/
 mypy nonogram_solver/
 ```
+
+
+#### Example
+
+```python
+from nonogram_solver import solve_nonogram
+
+result = solve_nonogram(
+    [[1, 1, 2], [1, 2], [6], [1]],
+    [[3], [2], [1, 1], [2], [3], [1, 1]],
+)
+for row in result:
+    print(' '.join(str(i) for i in row))
+```
