@@ -25,7 +25,7 @@ mypy nonogram_solver/
 ```
 
 
-#### Example
+### Example
 
 ```python
 from nonogram_solver import solve_nonogram
